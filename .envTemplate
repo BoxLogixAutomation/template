@@ -1,0 +1,6 @@
+yourBasicSettings=goHere
+anythingRequired=byTheApplication
+ifItIsNotRequired=byTheApplication
+thenYouShould=prefixTheVariable
+withAn=underscoreLike
+_thisVariable=isntNeededInThisFile

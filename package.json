@@ -1,0 +1,60 @@
+{
+  "name": "@boxlogixautomation/template",
+  "version": "0.0.1",
+  "description": "Template for BoxLogix Automation packages",
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": [
+    "lib"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext ts --ext js",
+    "lint:watch": "nodemon --watch src --ext ts,js --exec \"npm run lint\"",
+    "dev": "nodemon ./lib/index.js",
+    "start": "node ./lib/index.js",
+    "test:auto": "npx jest && npx validate-yaml && npx env-template-checker",
+    "test": "npm run lint && npm run build && npm run test:auto",
+    "build:auto": "npx tsc -p ./tsconfig.json",
+    "build": "npx replace-version --git && npm run build:auto && npx replace-version --pkg",
+    "preversion": "npm run test",
+    "version": "npx replace-version --pkg && npm run build:auto",
+    "postversion": "git push && git push --tags",
+    "semantic-release": "semantic-release"
+  },
+  "engines": {
+    "node": ">=16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BoxLogixAutomation/template.git"
+  },
+  "author": "Nathan Baker <nbaker@boxlogixautomation.com>",
+  "license": "UNLICENSED",
+  "bugs": {
+    "url": "https://github.com/BoxLogixAutomation/template/issues"
+  },
+  "homepage": "https://github.com/BoxLogixAutomation/template#readme",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "@boxlogixautomation/build-utilities": "^1.13.1",
+    "@semantic-release/git": "^10.0.1",
+    "@types/jest": "^29.5.2",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "@typescript-eslint/parser": "^5.62.0",
+    "eslint": "^8.49.0",
+    "semantic-release": "^18.0.1",
+    "semantic-release-npm-github-publish": "^1.5.1",
+    "ts-jest": "^29.1.0",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "branches": [
+      "master"
+    ],
+    "registry": "https://npm.pkg.github.com/",
+    "tag": "latest"
+  }
+}
