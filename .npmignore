@@ -1,0 +1,13 @@
+src/
+dist/
+build/
+runtime/
+.github/
+*.yml
+*.yaml
+.envTemplate
+*.tgz
+server.js
+.releaserc.json
+tsconfig.json
+.env
